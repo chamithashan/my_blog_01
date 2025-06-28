@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CAR NEXA | Blog</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    body {
+      background: url('photo_2025-06-27_04-52-55.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: white;
+      min-height: 100vh;
+      backdrop-filter: brightness(0.4);
+      display: flex;
+      flex-direction: column;
+    }
+    header {
+      background-color: rgba(128, 128, 128, 0.7);
+      padding: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      animation: fadeInDown 1s ease-out;
+    }
+    header h1 {
+      color: black;
+    }
+    nav {
+      margin-top: 10px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    nav a {
+      color: black;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+    nav a:hover {
+      color: #00ffff;
+    }
+    .content {
+      padding: 40px 20px;
+      text-align: center;
+      animation: fadeInUp 1.5s ease;
+      flex: 1;
+    }
+    .content h2 {
+      font-size: 36px;
+      margin-bottom: 20px;
+    }
+    .content p {
+      font-size: 16px;
+      max-width: 90%;
+      margin: 0 auto 30px;
+    }
+    .explore-btn {
+      padding: 12px 25px;
+      font-size: 16px;
+      background-color: #00ffff;
+      color: black;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
+      position: relative;
+      z-index: 2;
+    }
+    .explore-btn:hover {
+      transform: scale(1.05);
+      background-color: #ff69b4;
+      box-shadow: 0 0 15px #ff69b4, 0 0 30px #ff69b4;
+    }
+    .star {
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      background: #ff69b4;
+      border-radius: 50%;
+      opacity: 0;
+      pointer-events: none;
+      animation: disperse 1s ease-out forwards;
+      z-index: 1;
+    }
+    @keyframes disperse {
+      0% {
+        opacity: 1;
+        transform: translate(0, 0) scale(1);
+      }
+      100% {
+        opacity: 0;
+        transform: translate(var(--x), var(--y)) scale(0.3);
+      }
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+    .logo img {
+      width: 60px;
+      margin-right: 10px;
+      border-radius: 50%;
+    }
+    @keyframes fadeInDown {
+      0% { transform: translateY(-40px); opacity: 0; }
+      100% { transform: translateY(0); opacity: 1; }
+    }
+    @keyframes fadeInUp {
+      0% { transform: translateY(40px); opacity: 0; }
+      100% { transform: translateY(0); opacity: 1; }
+    }
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: rgba(0, 0, 0, 0.6);
+      font-size: 14px;
+      font-family: cursive;
+    }
+    @media (min-width: 768px) {
+      header h1 {
+        font-size: 32px;
+      }
+      .content h2 {
+        font-size: 48px;
+      }
+      .content p {
+        font-size: 18px;
+        max-width: 700px;
+      }
+      .explore-btn {
+        font-size: 18px;
+        padding: 15px 30px;
+      }
+      .logo img {
+        width: 80px;
+      }
+    }
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+    .menu-toggle .bar {
+      height: 3px;
+      width: 25px;
+      background-color: black;
+      margin: 4px 0;
+      transition: 0.4s;
+    }
+    .menu-toggle.active .bar:nth-child(1) {
+      transform: rotate(-45deg) translate(-5px, 6px);
+    }
+    .menu-toggle.active .bar:nth-child(2) {
+      opacity: 0;
+    }
+    .menu-toggle.active .bar:nth-child(3) {
+      transform: rotate(45deg) translate(-5px, -6px);
+    }
+    nav.hidden {
+      display: none;
+    }
+    nav.show {
+      display: flex;
+      flex-direction: column;
+      position: absolute;
+      top: 80px;
+      right: 20px;
+      background-color: rgba(255, 255, 255, 0.9);
+      border-radius: 10px;
+      padding: 10px;
+    }
+    nav.show a {
+      padding: 10px;
+      color: black;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 16px;
+      text-decoration: none;
+    }
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: flex;
+      }
+      nav {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <img src="CAR.png_.jpg" alt="CAR NEXA Logo">
+      <h1>CAR NEXA</h1>
+    </div>
+    <div class="menu-toggle" onclick="toggleMenu(this)">
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+    </div>
+    <nav class="hidden">
+      <a href="nexa.html">NEXA Photography</a>
+    </nav>
+  </header>
+  <div class="content">
+    <h2>Welcome to CAR NEXA</h2>
+    <p><strong>CINEXA</strong> is our dedicated film channel for auto enthusiasts and movie lovers. With CINEXA, we bring cinematic automotive stories to life — from reviews and road adventures to creative short films inspired by the car world.</p>
+    <a href="https://t.me/+pqhK8RVnyeY4Mjg1" class="explore-btn" onclick="return handleClick(event)">Explore Now</a>
+  </div>
+  <footer>
+    &copy; <script>document.write(new Date().getFullYear());</script> Chamith_A_Randika
+  </footer>
+  <script>
+    function handleClick(e) {
+      e.preventDefault();
+      const btn = e.target;
+      btn.classList.add('clicked');
+      const rect = btn.getBoundingClientRect();
+      for (let i = 0; i < 30; i++) {
+        const star = document.createElement('div');
+        star.classList.add('star');
+        const angle = Math.random() * 2 * Math.PI;
+        const distance = Math.random() * 100 + 30;
+        const x = Math.cos(angle) * distance + 'px';
+        const y = Math.sin(angle) * distance + 'px';
+        star.style.setProperty('--x', x);
+        star.style.setProperty('--y', y);
+        star.style.left = (rect.left + rect.width / 2) + 'px';
+        star.style.top = (rect.top + rect.height / 2) + 'px';
+        document.body.appendChild(star);
+        setTimeout(() => star.remove(), 1000);
+      }
+      setTimeout(() => {
+        btn.classList.remove('clicked');
+        window.open(btn.href, '_blank');
+      }, 1000);
+      return false;
+    }
+
+    function toggleMenu(el) {
+      el.classList.toggle("active");
+      const nav = document.querySelector("nav");
+      nav.classList.toggle("show");
+      nav.classList.toggle("hidden");
+    }
+  </script>
+</body>
+</html>
